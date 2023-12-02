@@ -1,7 +1,8 @@
-import pandas as pd
 import requests
+import os
+import streamlit as st
 
-API_KEY = SECRET_KEY
+API_KEY = st.secrets['SECRET_KEY']
 def get_data(place, forecast_days, kind):
     """
     get_data runs a request on the OpenWeather API
