@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-from get_data import get_data
+from backend import get_data
 
 # Creating widgets with streamlit for dashboard
 st.title("Weather Forecast for the Selected Days")
@@ -13,7 +13,7 @@ st.subheader(f"{option} for the next {days} days in {place}")
 
 # Creating chart which will pull data from the API and show to user
 
-d, t = get_data(days)
+data = get_data(place, days, option)
 
 figure = px.line(x=d, y=t, labels={"x": "Date", "y": "Temperature (F)"})
 st.plotly_chart(figure)
