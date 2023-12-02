@@ -3,16 +3,21 @@ import requests
 
 API_KEY = "90d4deec3639fc7317e1a176e50ac429"
 def get_data(place, forecast_days, kind):
+    """
+    get_data runs a request on the OpenWeather API
+    with that it pulls the weather data from the JSON
+    and returns that data to the graph to be displayed on the webpage
+    :param place:
+    :param forecast_days:
+    :param kind:
+    :return filtered_data:
+    """
     url = f"http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
     response = requests.get(url)
     data = response.json()
     filtered_data = data["list"]
     nr_values = 8 * forecast_days
     filtered_data = filtered_data[:nr_values]
-    if kind == "Temperature":
-        filtered_data = [dict["main"]["temp"] for dict in filtered_data]
-    if kind == "Sky":
-        filtered_data = [dict["weather"][0]["main"] for dict in filtered_data]
     return filtered_data
 
 if __name__ == "__main__":
