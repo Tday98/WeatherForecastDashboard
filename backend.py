@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 
-API_KEY = "90d4deec3639fc7317e1a176e50ac429"
+API_KEY = SECRET_KEY
 def get_data(place, forecast_days, kind):
     """
     get_data runs a request on the OpenWeather API
